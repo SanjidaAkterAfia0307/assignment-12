@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // import logo from "../../../img/logo1.png"
 import { AuthContext } from '../../../Contexts/AuthProvider';
-// import { FaStar } from 'react-icons/fa';
+import { FaUserCircle } from 'react-icons/fa';
 // import ThemeToggle from '../../ThemeToggle';
 
 const Header = () => {
@@ -20,14 +20,14 @@ const Header = () => {
 
 
   return (
-    <nav className='w-full fixed z-10 shadow-lg bg-white ' >
+    <nav className='w-full   bg-white ' >
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <Link to="">
               <div className='flex items-center'>
                 <img src="{logo}" className="w-12 rounded-full" alt="" />
-                <h2 className='text-2xl ml-2 font-bold text-indigo-900 hover:text-indigo-600'>Quick Jump !</h2>
+                <h2 className='text-2xl ml-2 font-bold text-primary  hover:text-indigo-600'>BookRestore!</h2>
               </div>
             </Link>
             <div className="md:hidden">
@@ -74,38 +74,38 @@ const Header = () => {
               }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+              <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                 <Link to="/">Home</Link>
               </li>
-              <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+              <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                 <Link to="/blog">Blog</Link>
               </li>
-              <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+              <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                 <Link to="/faq">FAQ</Link>
               </li>
-              <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+              <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                 <Link to="courses">Courses</Link>
               </li>
-              {user?
+              {user?.uid?
 
                 <>
-                  <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                     <Link onClick={handleLogOut} >Log Out</Link>
                   </li>
-                  <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                     <Link >
                       <div className="tooltip tooltip-bottom" data-tip={user?.displayName ? user?.displayName : "User"}>
-                        <button ><img className='rounded-full w-10' src={user?.photoURL} alt="" /></button>
+                        <button ><img className='rounded-full w-10' src={user?.photoURL ? user?.photoURL : <FaUserCircle></FaUserCircle>} alt="" /></button>
                       </div>
                     </Link>
                   </li>
                 </>
                 :
                 <>
-                  <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                     <Link to="/login">Log In</Link>
                   </li>
-                  <li className="text-indigo-600 font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                     <Link to="/register">Sign Up</Link>
                   </li>
                 </>
