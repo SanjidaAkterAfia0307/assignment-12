@@ -27,7 +27,7 @@ const Register = () => {
         const formData = new FormData()
         formData.append('image', photof)
 
-        const url = `https://api.imgbb.com/1/upload?key=a331c3baf6953b506f3e9d485f489368`
+        const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMG}`
 
         fetch(url, {
             method: "POST",

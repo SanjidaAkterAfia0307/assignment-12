@@ -15,7 +15,7 @@ const Book = ({ book }) => {
                     </div>
                     <div className='-mt-5'>
                         <h2 className='text-base font-semibold text-white btn-primary rounded-2xl p-1 text-center'>{location}</h2>
-                        <small className='text-gray-500 text-sm'>{post}</small>
+                        <small className='text-gray-500 text-sm'>{post.slice(0,15)}</small>
                     </div>
                 </div>
                 <p>{summery}</p>
