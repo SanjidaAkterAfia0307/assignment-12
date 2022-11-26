@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { FaCheckCircle } from 'react-icons/fa';
+import BigLoading from '../../../../Components/Loading/BigLoading';
 import NoElements from '../../NoElements/NoElements';
 
 const AllSellers = () => {
@@ -54,7 +55,10 @@ const AllSellers = () => {
         })
     }
 
-    if(isLoading || sellers.length===0){
+    if(isLoading){
+        return <BigLoading></BigLoading>
+    }
+    if(sellers.length<1){
         return <NoElements item="Sellers"></NoElements>
     }
     return (
@@ -82,19 +86,23 @@ const AllSellers = () => {
                             </th>
                             <td>{seller.name}</td>
                             <td>{seller.email}</td>
+                            <td>
+
                             {
                                 !seller.verify && 
-                                <td>
+                                
                                 <button className="btn btn-accent " onClick={() => handleVerify(seller._id)}>Verify</button>
-                            </td>
+                            
                             }
                             {
                                 seller.verify && 
-                                <FaCheckCircle className='text-blue-500  w-10 h-10'></FaCheckCircle>
+                                <FaCheckCircle className='text-blue-500  w-10 h-10 '></FaCheckCircle>
                             }
+                            </td>
                             <td>
                                 <button className="btn btn-accent " onClick={() => handleDelete(seller._id)}>Delete</button>
                             </td>
+                            
 
                         </tr>)
                     }

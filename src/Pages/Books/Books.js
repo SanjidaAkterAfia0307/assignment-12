@@ -8,7 +8,7 @@ const Books = () => {
     const[modalBook,setModalBook]=useState(null)
     // console.log(books)
     return (
-        <div className='grid grid-cols-2 gap-20 w-3/4 mx-auto my-12'>
+        <div className='md:grid grid-cols-2 gap-20 w-3/4 mx-auto my-12'>
             {
                 books.map(book=><Book book={book} modalBook={modalBook} setModalBook={setModalBook} key={book._id}></Book>)
             }

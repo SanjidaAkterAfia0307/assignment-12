@@ -11,7 +11,7 @@ const Categories = () => {
     return (
         <div>
             <h2 className='text-primary text-4xl font-semibold text-center my-16'>Choose Your Own Genre</h2>
-        <div className='grid grid-cols-3 gap-10'>
+        <div className='grid grid-cols-1  lg:grid-cols-3 gap-10'>
             {
                 categories.map(category=> <Category key={category._id} category={category}></Category>)
 

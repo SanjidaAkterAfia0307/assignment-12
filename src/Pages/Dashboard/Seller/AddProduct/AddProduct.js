@@ -30,6 +30,7 @@ const AddProduct = () => {
         const genre = form.genre.value;
         const image=form.photo.files[0]
         const status="Available"
+        
         const formData = new FormData()
         formData.append('image',image)
 
@@ -69,7 +70,7 @@ const AddProduct = () => {
         <div>
 
             <h2 className='text-4xl font-semibold my-10 text-center'>Add A Product</h2>
-            <form onSubmit={handleSubmit} className='w-1/2 mx-auto p-10 rounded-3xl shadow-md'>
+            <form onSubmit={handleSubmit} className='md:w-1/2 mx-auto py-10 px-5 md:p-10 rounded-3xl shadow-md'>
                 <div className='flex gap-10'>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">

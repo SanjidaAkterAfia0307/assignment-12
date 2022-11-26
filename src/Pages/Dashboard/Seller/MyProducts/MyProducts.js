@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import BigLoading from '../../../../Components/Loading/BigLoading';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
+import NoElements from '../../NoElements/NoElements';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext)
@@ -49,9 +50,12 @@ const MyProducts = () => {
     if(isLoading){
         return <BigLoading></BigLoading>
     }
+    if(myProducts.length<1){
+        return <NoElements item="Products"></NoElements>
+    }
     return (
         <div>
-            {myProducts.length}
+           
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

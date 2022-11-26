@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import BigLoading from '../../../../Components/Loading/BigLoading';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
+import NoElements from '../../NoElements/NoElements';
 
 const MyBuyers = () => {
     const { user } = useContext(AuthContext)
@@ -14,6 +16,13 @@ const MyBuyers = () => {
         })
             .then(res => res.json())
     })
+
+    if(isLoading){
+        return <BigLoading></BigLoading>
+    }
+    if(myBuyers.length<1){
+        return <NoElements item="Buyers"></NoElements>
+    }
     return (
         <div>
             {myBuyers.length}

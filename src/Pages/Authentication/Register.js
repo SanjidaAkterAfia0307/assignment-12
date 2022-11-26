@@ -127,7 +127,7 @@ const Register = () => {
                         <option onClick={(e) => setSaveAs(e.value)}>Buyer</option>
                         <option onClick={(e) => { setSaveAs(e.value) }}>Seller</option>
                     </select>
-                    <div className='flex gap-3'>
+                    <div className='flex gap-3 my-5'>
                         <input type="radio" name="radio-1" className="radio" />
                         <p>Accept rules</p>
                     </div>
