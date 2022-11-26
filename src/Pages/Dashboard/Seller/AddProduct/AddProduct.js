@@ -29,7 +29,7 @@ const AddProduct = () => {
         const sellerPhone = form.phone.value;
         const genre = form.genre.value;
         const image=form.photo.files[0]
-
+        const status="Available"
         const formData = new FormData()
         formData.append('image',image)
 
@@ -43,7 +43,7 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data)
                 const img=data?.data?.display_url;
-                const product={name,author,summery,resalePrice,originalPrice,yearOfPurchase,yearOfUse,sellerEmail,sellerName,sellerPhone,img,condition,location,genre}
+                const product={name,author,status,summery,resalePrice,originalPrice,yearOfPurchase,yearOfUse,sellerEmail,sellerName,sellerPhone,img,condition,location,genre}
                 fetch('http://localhost:7000/books', {
                     method: "POST",
                     headers: {

@@ -4,8 +4,8 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Booking = ({ book, setModalBook }) => {
     const { user } = useContext(AuthContext)
-    const { name, author, img, originalPrice, resalePrice, location, post, sellerName, summery, yearOfUse, yearOfPurchase, sellerEmail } = book
-    // console.log(book)
+    const { name, author, img, originalPrice, resalePrice,status, location, post, sellerName, summery, yearOfUse, yearOfPurchase, sellerEmail } = book
+    console.log(book)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -16,7 +16,7 @@ const Booking = ({ book, setModalBook }) => {
         const buyerName = user.displayName;
 
 
-        const booking = { location, sellerName, phone,img, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
+        const booking = { location, sellerName, phone,img,status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
 
 
         fetch("http://localhost:7000/bookings", {

@@ -6,7 +6,7 @@ import Booking from './Booking';
 const Books = () => {
     const books=useLoaderData()
     const[modalBook,setModalBook]=useState(null)
-    // console.log(books)
+    console.log(books)
     return (
         <div className='grid grid-cols-2 gap-20 w-3/4 mx-auto my-12'>
             {

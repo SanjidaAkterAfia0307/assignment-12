@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import BigLoading from '../../../../Components/Loading/BigLoading';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
@@ -26,7 +27,7 @@ const MyOrders = () => {
         //         refetch()
         //     })
     }
-   
+
 
 
     if (isLoading) {
@@ -70,9 +71,21 @@ const MyOrders = () => {
                                 </td>
                                 <td>{myBooking.price}</td>
                                 <td>{myBooking.sellerEmail}</td>
-                                
+
                                 <td>
-                                    <button className="btn btn-accent " onClick={() => handlePay(myBooking._id)}>Pay</button>
+                                    {
+                                        myBooking.price && myBooking.status === "Available" &&
+
+                                        <Link to={`/dashboard/payment/${myBooking._id}`}>
+
+                                            <button className="btn btn-accent " >Pay</button>
+                                        </Link>
+
+                                    }{
+                                        myBooking.status === "Sold" &&
+                                        <button className="btn btn-primary " >Paid</button>
+
+                                    }
                                 </td>
 
                             </tr>)
