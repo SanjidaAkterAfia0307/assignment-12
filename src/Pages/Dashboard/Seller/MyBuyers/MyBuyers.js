@@ -6,7 +6,12 @@ const MyBuyers = () => {
     const { user } = useContext(AuthContext)
     const { data: myBuyers = [], refetch, isLoading } = useQuery({
         queryKey: ['myBuyers'],
-        queryFn: () => fetch(`http://localhost:7000/bookings/${user?.email}`)
+        queryFn: () => fetch(`http://localhost:7000/bookings/${user?.email}`,{
+            headers:{
+
+                authorization:`bearer ${localStorage.getItem("bookToken")}`
+            }
+        })
             .then(res => res.json())
     })
     return (

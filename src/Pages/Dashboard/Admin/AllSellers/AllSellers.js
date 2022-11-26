@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { FaCheckCircle } from 'react-icons/fa';
 import NoElements from '../../NoElements/NoElements';
 
 const AllSellers = () => {
@@ -45,8 +46,11 @@ const AllSellers = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
-            toast.success("Verify Successfully !")
-            refetch()
+            if(data.modifiedCount>0){
+
+                toast.success("Verify Successfully !")
+                refetch()
+            }
         })
     }
 
@@ -78,9 +82,16 @@ const AllSellers = () => {
                             </th>
                             <td>{seller.name}</td>
                             <td>{seller.email}</td>
-                            <td>
+                            {
+                                !seller.verify && 
+                                <td>
                                 <button className="btn btn-accent " onClick={() => handleVerify(seller._id)}>Verify</button>
                             </td>
+                            }
+                            {
+                                seller.verify && 
+                                <FaCheckCircle className='text-blue-500  w-10 h-10'></FaCheckCircle>
+                            }
                             <td>
                                 <button className="btn btn-accent " onClick={() => handleDelete(seller._id)}>Delete</button>
                             </td>

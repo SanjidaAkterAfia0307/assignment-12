@@ -19,7 +19,9 @@ const Book = ({ book, setModalBook }) => {
                         <small className='text-gray-500 text-sm'>{post.slice(0, 15)}</small>
                     </div>
                 </div>
-                <p>{summery}</p>
+                <div className=''>
+                <p className='w2'>{summery}</p>
+                </div>
                 <div className='flex justify-between'>
                     <div>
                         <p><span className='text-primary font-medium'>Resale Price :</span> ${resalePrice}</p>

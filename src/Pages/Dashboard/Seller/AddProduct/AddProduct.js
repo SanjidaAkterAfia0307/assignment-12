@@ -152,7 +152,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="text-base">Meeting Place</span>
+                            <span className="text-base">location</span>
                         </label>
                         <input type="text" name='place' placeholder="Type here" className="input input-bordered w-full" required />
 

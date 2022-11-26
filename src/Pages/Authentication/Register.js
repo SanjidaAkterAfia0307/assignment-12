@@ -6,9 +6,9 @@ import useToken from '../../Hooks/useToken';
 const Register = () => {
     const { user, createUser, updateUser, googleLogin } = useContext(AuthContext)
     const [saveAs, setSaveAs] = useState('Buyer')
-    const [createEmail,setCreateEmail]=useState('')
-    const [token]=useToken(createEmail)
-    const navigate=useNavigate()
+    const [createEmail, setCreateEmail] = useState('')
+    const [token] = useToken(createEmail)
+    const navigate = useNavigate()
 
 
     // handle submit
@@ -35,7 +35,7 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                const photo=data.data.display_url;
+                const photo = data.data.display_url;
 
                 // create user
 
@@ -52,8 +52,8 @@ const Register = () => {
                         updateUser(profile)
                             .then(() => {
                                 alert("Update")
-                
-                                saveUser(name, email,photo,role)
+
+                                saveUser(name, email, photo, role)
                             })
                             .catch(er => console.error(er))
 
@@ -72,16 +72,16 @@ const Register = () => {
             .then(res => {
                 const user = res.user;
                 // saveUser
-                saveUser( user.displayName,user.email,user.photoURL,saveAs)
+                saveUser(user.displayName, user.email, user.photoURL, saveAs)
             })
             .catch(er => console.error(er))
     }
 
 
 
-   
-    const saveUser = (name, email,photo,role) => {
-        const user = { name, email,photo,role }
+
+    const saveUser = (name, email, photo, role) => {
+        const user = { name, email, photo, role }
         fetch("http://localhost:7000/users", {
             method: "POST",
             headers: {
@@ -96,7 +96,7 @@ const Register = () => {
                 setCreateEmail(email)
             })
     }
-    console.log(saveAs)
+
     return (
         <div className='lg:w-1/2 mx-auto pt-24 pb-56 '>
 
@@ -127,6 +127,10 @@ const Register = () => {
                         <option onClick={(e) => setSaveAs(e.value)}>Buyer</option>
                         <option onClick={(e) => { setSaveAs(e.value) }}>Seller</option>
                     </select>
+                    <div className='flex gap-3'>
+                        <input type="radio" name="radio-1" className="radio" />
+                        <p>Accept rules</p>
+                    </div>
                     {/* <p className='text-xl text-yellow-400 py-3'>{error}</p> */}
                     <button type="submit" className="text-white block bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 

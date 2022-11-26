@@ -63,9 +63,9 @@ const MyProducts = () => {
                             </th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Favorite Color</th>
-                            <th></th>
-                            <th></th>
+                            <th>Status</th>
+                            <th>Advertise</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,7 +93,7 @@ const MyProducts = () => {
                                     <br />
                                     <span className="badge badge-ghost badge-sm">Original Price {myProduct.originalPrice}</span>
                                 </td>
-                                <td>Status</td>
+                                <td>{myProduct.status}</td>
                                 <th>
                                     <button className="btn btn-accent " onClick={() => handleAdvertise(myProduct._id)}>Advertise</button>
                                 </th>

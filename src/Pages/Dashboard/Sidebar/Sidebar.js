@@ -12,7 +12,7 @@ const Sidebar = () => {
     // const [Seller,setSeller]=useState(false)
     const [isSeller]=useSeller(user?.email)
     const [isAdmin]=useAdmin(user?.email)
-    console.log(isSeller)
+    // console.log(isSeller)
     return (
         <div>
             {/* Branding & Profile Info */}

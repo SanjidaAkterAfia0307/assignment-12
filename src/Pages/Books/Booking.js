@@ -4,7 +4,8 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Booking = ({ book, setModalBook }) => {
     const { user } = useContext(AuthContext)
-    const { name, author, img, originalPrice, resalePrice,status, location, post, sellerName, summery, yearOfUse, yearOfPurchase, sellerEmail } = book
+    console.log(user.displayName)
+    const { name, author, img, originalPrice, resalePrice, status, location, post, sellerName, summery, yearOfUse, yearOfPurchase, sellerEmail } = book
     console.log(book)
 
     const handleSubmit = (e) => {
@@ -16,7 +17,7 @@ const Booking = ({ book, setModalBook }) => {
         const buyerName = user.displayName;
 
 
-        const booking = { location, sellerName, phone,img,status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
+        const booking = { location, sellerName, phone, img, status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
 
 
         fetch("http://localhost:7000/bookings", {
@@ -66,12 +67,22 @@ const Booking = ({ book, setModalBook }) => {
                         <div className='flex gap-10'>
                             <div className="form-control w-full ">
                                 <label className="label">
+                                    <span className="text-base">Name</span>
+                                </label>
+                                <input type="text" placeholder="Type here" disabled defaultValue={user?.displayName} className="input input-bordered w-full " />
+
+                            </div>
+                            <div className="form-control w-full ">
+                                <label className="label">
                                     <span className="text-base">Email</span>
                                 </label>
                                 <input type="text" placeholder="Type here" disabled defaultValue={user?.email} className="input input-bordered w-full " />
 
                             </div>
 
+
+                        </div>
+                        <div className="flex gap-10">
                             <div className="form-control w-full ">
                                 <label className="label">
                                     <span className="text-base">Phone Number</span>
@@ -79,13 +90,13 @@ const Booking = ({ book, setModalBook }) => {
                                 <input type="number" name='phone' placeholder="Type here" className="input input-bordered w-full" required />
 
                             </div>
-                        </div>
-                        <div className="form-control w-full ">
-                            <label className="label">
-                                <span className="text-base">Meeting Place</span>
-                            </label>
-                            <input type="text" name='place' placeholder="Type here" className="input input-bordered w-full" required />
+                            <div className="form-control w-full ">
+                                <label className="label">
+                                    <span className="text-base">Meeting Place</span>
+                                </label>
+                                <input type="text" name='place' placeholder="Type here" className="input input-bordered w-full" required />
 
+                            </div>
                         </div>
                         <div className='flex gap-5 justify-end'>
                             <div className='flex justify-end my-2'>

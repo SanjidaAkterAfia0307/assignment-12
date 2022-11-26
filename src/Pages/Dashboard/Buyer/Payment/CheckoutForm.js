@@ -1,9 +1,10 @@
 import { async } from '@firebase/util';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const CheckoutForm = ({ booking }) => {
-
+console.log(booking)
     const { price,book,img,buyerName,buyerEmail,location,sellerName,sellerEmail} = booking;
 
     const [cardError, setCardError] = useState('');
@@ -100,9 +101,10 @@ const CheckoutForm = ({ booking }) => {
             // store payment info in the database
             const payment = {
                 price,
+                book,
                 transactionId: paymentIntent.id,
                 buyerEmail,
-                sellerEmail,
+                sellerEmail:sellerEmail,
                 bookingId:booking._id
             }
             fetch('http://localhost:7000/payments', {
@@ -119,6 +121,7 @@ const CheckoutForm = ({ booking }) => {
                     if (data.insertedId) {
                         setSuccess('Congrats! your payment completed');
                         setTransactionId(paymentIntent.id);
+                        toast.success("Payment Successfull !")
                     }
                 })
         }

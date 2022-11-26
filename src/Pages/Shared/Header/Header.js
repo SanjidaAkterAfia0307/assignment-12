@@ -1,14 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// import logo from "../../../img/logo1.png"
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
-// import ThemeToggle from '../../ThemeToggle';
+
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
 
-  console.log(user)
+  // console.log(user)
   const handleLogOut = () => {
     logOut()
       .then(() => { })
@@ -17,7 +16,7 @@ const Header = () => {
 
 
   const [navbar, setNavbar] = useState(false);
-  const [sidebar, setSidebar] = useState(false);
+
 
 
   return (
