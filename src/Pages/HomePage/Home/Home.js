@@ -9,7 +9,7 @@ const Home = () => {
         <div className='w-3/4 mx-auto space-y-36'>
             <HomeBanner></HomeBanner>
             <Categories></Categories>
-            <AdvertiseItems></AdvertiseItems>
+            
             <AboutUs></AboutUs>
         </div>
     );

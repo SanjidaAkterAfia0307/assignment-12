@@ -11,9 +11,9 @@ const Login = () => {
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
 
-    if (token) {
-        navigate(from, { replace: true })
-    }
+    // if (token) {
+    //     navigate(from, { replace: true })
+    // }
     const handleSubmit = (e) => {
 
         e.preventDefault()

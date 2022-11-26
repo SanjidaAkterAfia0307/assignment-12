@@ -17,7 +17,10 @@ const MyProducts = () => {
         console.log(id)
         fetch(`http://localhost:7000/books/${id}`,{
             method:"DELETE",
-            authorization:`bearer ${localStorage.getItem("bookRestore")}`
+            headers:{
+
+                authorization:`bearer ${localStorage.getItem("bookToken")}`
+            }
         })
         .then(res=>res.json())
         .then(data=>{
@@ -30,7 +33,10 @@ const MyProducts = () => {
         console.log(id)
         fetch(`http://localhost:7000/books/${id}`,{
             method:"PUT",
-            authorization:`bearer ${localStorage.getItem("bookRestore")}`
+            headers:{
+
+                authorization:`bearer ${localStorage.getItem("bookToken")}`
+            }
         })
         .then(res=>res.json())
         .then(data=>{

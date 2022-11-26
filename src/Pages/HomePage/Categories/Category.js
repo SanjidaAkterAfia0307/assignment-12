@@ -2,7 +2,7 @@ import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const Category = ({ category }) => {
-    console.log(category)
+    // console.log(category)
     return (
         <div className="card w-96 h-72 bg-base-100 shadow-xl image-full">
             <figure><img src={category.img} className='w-full' alt="Shoes" /></figure>

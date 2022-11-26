@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext)
+    const navigate=useNavigate()
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
         queryFn: () => fetch('http://localhost:7000/bookGenre')
@@ -55,6 +57,7 @@ const AddProduct = () => {
                     console.log(data)
                     if(data.acknowledged){
                         toast.success("Added Successfully !")
+                        navigate('/dashboard/myproduct')
                     }
                 })
             })

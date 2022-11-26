@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import useAdmin from '../../../Hooks/useAdmin';
 import useSeller from '../../../Hooks/useSeller';
+import AdminNav from '../Admin/AdminNav/AdminNav';
 import SellerNav from '../Seller/SellerNav/SellerNav';
 
 const Sidebar = () => {
     const { user, logout } = useContext(AuthContext)
     // const [Seller,setSeller]=useState(false)
     const [isSeller]=useSeller(user?.email)
+    const [isAdmin]=useAdmin(user?.email)
     console.log(isSeller)
     return (
         <div>
@@ -42,7 +45,10 @@ const Sidebar = () => {
             <div className='flex flex-col justify-between flex-1 mt-6'>
                 <nav>
                    {
-                    isSeller && <SellerNav></SellerNav>
+                    isSeller && !isAdmin && <SellerNav></SellerNav>
+                   }
+                   {
+                    isAdmin && !isSeller && <AdminNav></AdminNav>
                    }
                 </nav>
             </div>

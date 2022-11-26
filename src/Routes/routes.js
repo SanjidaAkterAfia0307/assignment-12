@@ -6,11 +6,17 @@ import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import Blog from "../Pages/Blog/Blog";
 import Books from "../Pages/Books/Books";
+import AllBuyers from "../Pages/Dashboard/Admin/AllBuyers/AllBuyers";
+import AllSellers from "../Pages/Dashboard/Admin/AllSellers/AllSellers";
 import AddProduct from "../Pages/Dashboard/Seller/AddProduct/AddProduct";
+import MyBuyers from "../Pages/Dashboard/Seller/MyBuyers/MyBuyers";
 import MyProducts from "../Pages/Dashboard/Seller/MyProducts/MyProducts";
+import Welcome from "../Pages/Dashboard/Welcome/Welcome";
 import ErrorElement from "../Pages/ErrorElement/ErrorElement";
 import Home from "../Pages/HomePage/Home/Home";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 export const router=createBrowserRouter([
     {
@@ -32,7 +38,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:"/blog",
-                element:<PrivateRoute><Blog></Blog></PrivateRoute>
+                element:<Blog></Blog>
             },
             {
                 path:"/categories/:name",
@@ -49,12 +55,28 @@ export const router=createBrowserRouter([
         errorElement:<ErrorElement></ErrorElement>,
         children:[
             {
+                path:"/dashboard",
+                element:<PrivateRoute><Welcome></Welcome></PrivateRoute>
+            },
+            {
                 path:"/dashboard/addproduct",
-                element:<AddProduct></AddProduct>
+                element:<SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path:"/dashboard/myproduct",
-                element:<MyProducts></MyProducts>
+                element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path:"/dashboard/mybuyer",
+                element:<SellerRoute><MyBuyers></MyBuyers></SellerRoute>
+            },
+            {
+                path:"/dashboard/all-seller",
+                element:<AdminRoute><AllSellers></AllSellers></AdminRoute>
+            },
+            {
+                path:"/dashboard/all-buyer",
+                element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
         ]
     }
