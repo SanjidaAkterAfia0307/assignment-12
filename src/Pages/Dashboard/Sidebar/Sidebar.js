@@ -4,6 +4,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 import useAdmin from '../../../Hooks/useAdmin';
 import useSeller from '../../../Hooks/useSeller';
 import AdminNav from '../Admin/AdminNav/AdminNav';
+import BuyerNav from '../Buyer/BuyerNav/BuyerNav';
 import SellerNav from '../Seller/SellerNav/SellerNav';
 
 const Sidebar = () => {
@@ -49,6 +50,9 @@ const Sidebar = () => {
                    }
                    {
                     isAdmin && !isSeller && <AdminNav></AdminNav>
+                   }
+                   {
+                    !isAdmin && !isSeller && <BuyerNav></BuyerNav>
                    }
                 </nav>
             </div>

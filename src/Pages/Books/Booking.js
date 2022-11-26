@@ -16,7 +16,7 @@ const Booking = ({ book, setModalBook }) => {
         const buyerName = user.displayName;
 
 
-        const booking = { location, sellerName, phone, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
+        const booking = { location, sellerName, phone,img, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
 
 
         fetch("http://localhost:7000/bookings", {
