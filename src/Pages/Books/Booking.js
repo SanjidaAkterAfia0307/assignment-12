@@ -20,7 +20,7 @@ const Booking = ({ book, setModalBook }) => {
         const booking = { location, sellerName, phone, img, status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
 
 
-        fetch("http://localhost:7000/bookings", {
+        fetch("https://assignment-12-server-sanjidaakterafia0307.vercel.app/bookings", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

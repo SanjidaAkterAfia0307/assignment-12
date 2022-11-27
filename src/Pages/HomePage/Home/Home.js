@@ -8,12 +8,12 @@ import { useQuery } from '@tanstack/react-query';
 const Home = () => {
     const { data: books = [] } = useQuery({
         queryKey: ['books'],
-        queryFn: () => fetch('http://localhost:7000/booksAd')
+        queryFn: () => fetch('https://assignment-12-server-sanjidaakterafia0307.vercel.app/booksAd')
             .then(res => res.json())
     })
     if(books.length<=0){
         return(
-            <div className='w-3/4 mx-auto space-y-36'>
+            <div className='md:w-3/4 w-full p-5 mx-auto space-y-36'>
             <HomeBanner></HomeBanner>
             <Categories></Categories>
             <AboutUs></AboutUs>
@@ -21,7 +21,7 @@ const Home = () => {
         )
     }
     return (
-        <div className='w-3/4 mx-auto space-y-36'>
+        <div className='md:w-3/4 w-full p-5 mx-auto space-y-36'>
             <HomeBanner></HomeBanner>
             <Categories></Categories>
             <AdvertiseItems></AdvertiseItems>

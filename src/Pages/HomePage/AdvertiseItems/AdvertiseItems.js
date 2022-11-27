@@ -5,7 +5,7 @@ import AdvertiseItem from './AdvertiseItem';
 const AdvertiseItems = () => {
     const { data: advertiseItems = [] } = useQuery({
         queryKey: ['advertiseItems'],
-        queryFn: () => fetch('http://localhost:7000/advertiseBooks')
+        queryFn: () => fetch('https://assignment-12-server-sanjidaakterafia0307.vercel.app/advertiseBooks')
             .then(res => res.json())
     })
     if(advertiseItems){

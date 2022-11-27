@@ -5,7 +5,7 @@ const useToken=email=>{
 
     useEffect(()=>{
        if(email){
-        fetch(`http://localhost:7000/jwt?email=${email}`)
+        fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/jwt?email=${email}`)
         .then(res=>res.json())
         .then(data=>{
             if(data.bookToken){

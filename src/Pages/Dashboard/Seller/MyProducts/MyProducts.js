@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import BigLoading from '../../../../Components/Loading/BigLoading';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 import NoElements from '../../NoElements/NoElements';
@@ -8,7 +9,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext)
     const { data: myProducts = [],refetch,isLoading } = useQuery({
         queryKey: ['myProducts'],
-        queryFn: () => fetch(`http://localhost:7000/books/${user?.email}`)
+        queryFn: () => fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/books/${user?.email}`)
             .then(res => res.json())
     })
 
@@ -16,7 +17,7 @@ const MyProducts = () => {
     // delete
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:7000/books/${id}`,{
+        fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/books/${id}`,{
             method:"DELETE",
             headers:{
 
@@ -32,7 +33,7 @@ const MyProducts = () => {
     // advertise
     const handleAdvertise = (id) => {
         console.log(id)
-        fetch(`http://localhost:7000/books/${id}`,{
+        fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/books/${id}`,{
             method:"PUT",
             headers:{
 
@@ -41,8 +42,12 @@ const MyProducts = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
-            refetch()
+            if(data.modifiedCount){
+
+                console.log(data)
+                refetch()
+                toast.success("Advertise Successfully !")
+            }
         })
     }
 
@@ -99,7 +104,14 @@ const MyProducts = () => {
                                 </td>
                                 <td>{myProduct.status}</td>
                                 <th>
+                                    {
+                                        myProduct.advertise &&
+                                        <button className="btn btn-accent ">Done</button>
+                                    }
+                                   {
+                                    !myProduct.advertise &&
                                     <button className="btn btn-accent " onClick={() => handleAdvertise(myProduct._id)}>Advertise</button>
+                                   }
                                 </th>
                                 <th>
                                     <button className="btn btn-accent " onClick={() => handleDelete(myProduct._id)}>Delete</button>

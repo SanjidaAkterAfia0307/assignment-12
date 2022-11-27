@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FaCheckCircle } from 'react-icons/fa';
 import Booking from './Booking';
 
@@ -6,7 +7,7 @@ const Book = ({ book, setModalBook }) => {
 
     const handleReport = (id) => {
         console.log(id)
-        fetch(`http://localhost:7000/books/report/${id}`,{
+        fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/books/report/${id}`,{
             method:"PUT",
             headers:{
                 "content-type":'application/json',
@@ -16,6 +17,7 @@ const Book = ({ book, setModalBook }) => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
+            toast.success("Reported Successfully !")
         })
     }
     // console.log(book)

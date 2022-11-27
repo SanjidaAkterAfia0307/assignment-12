@@ -6,7 +6,7 @@ import NoElements from '../../NoElements/NoElements';
 const AllBuyers = () => {
     const { data: buyers = [],refetch ,isLoading} = useQuery({
         queryKey: ['buyers'],
-        queryFn: () => fetch('http://localhost:7000/buyers',{
+        queryFn: () => fetch('https://assignment-12-server-sanjidaakterafia0307.vercel.app/buyers',{
             headers:{
 
                 authorization:`bearer ${localStorage.getItem("bookToken")}`
@@ -19,7 +19,7 @@ const AllBuyers = () => {
 
     const handleDelete=(id)=>{
         console.log(id)
-        fetch(`http://localhost:7000/buyers/${id}`,{
+        fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/buyers/${id}`,{
             method:"DELETE",
             headers:{
 
@@ -33,22 +33,7 @@ const AllBuyers = () => {
             refetch()
         })
     }
-    // const handleVerify=(id)=>{
-    //     console.log(id)
-    //     fetch(`http://localhost:7000/buyers/${id}`,{
-    //         method:"PUT",
-    //         headers:{
 
-    //             authorization:`bearer ${localStorage.getItem("bookToken")}`
-    //         }
-    //     })
-    //     .then(res=>res.json())
-    //     .then(data=>{
-    //         console.log(data)
-    //         toast.success("Verify Successfully !")
-    //         refetch()
-    //     })
-    // }
 
     if(isLoading || buyers.length===0){
         return <NoElements item="Buyers"></NoElements>

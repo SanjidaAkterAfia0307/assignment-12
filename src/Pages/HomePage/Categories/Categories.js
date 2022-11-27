@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Category from './Category';
+import axios from 'axios';
 
 const Categories = () => {
-    const { data: categories = [] } = useQuery({
-        queryKey: ['categories'],
-        queryFn: () => fetch('http://localhost:7000/categories')
-            .then(res => res.json())
-    })
+    const [categories,setCategories]=useState([])
+   axios.get('https://assignment-12-server-sanjidaakterafia0307.vercel.app/categories')
+            .then(data=>{
+                setCategories(data.data)
+            })
+    
     return (
         <div>
             <h2 className='text-primary text-4xl font-semibold text-center my-16'>Choose Your Own Genre</h2>

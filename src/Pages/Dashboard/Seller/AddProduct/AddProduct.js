@@ -9,7 +9,7 @@ const AddProduct = () => {
     const navigate=useNavigate()
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
-        queryFn: () => fetch('http://localhost:7000/bookGenre')
+        queryFn: () => fetch('https://assignment-12-server-sanjidaakterafia0307.vercel.app/bookGenre')
             .then(res => res.json())
     })
     const handleSubmit = (e) => {
@@ -45,7 +45,7 @@ const AddProduct = () => {
                 console.log(data)
                 const img=data?.data?.display_url;
                 const product={name,author,status,summery,resalePrice,originalPrice,yearOfPurchase,yearOfUse,sellerEmail,sellerName,sellerPhone,img,condition,location,genre}
-                fetch('http://localhost:7000/books', {
+                fetch('https://assignment-12-server-sanjidaakterafia0307.vercel.app/books', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
@@ -76,14 +76,14 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="text-base">Book Name</span>
                         </label>
-                        <input type="text" name='book' placeholder="Type here" className="input input-bordered w-full " />
+                        <input type="text" name='book' placeholder="Type here" className="input input-bordered w-full " required/>
 
                     </div>
                     <div className="form-control w-full max-w-xs ">
                         <label className="label">
                             <span className="text-base">Author's Name</span>
                         </label>
-                        <input type="text" name='author' placeholder="Type here" className="input input-bordered w-full" />
+                        <input type="text" name='author' placeholder="Type here" className="input input-bordered w-full" required/>
 
                     </div>
                 </div>
@@ -92,14 +92,14 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="text-base">Original Price</span>
                         </label>
-                        <input type="number" name='originalPrice' placeholder="Type here" className="input input-bordered w-full" />
+                        <input type="number" name='originalPrice' placeholder="Type here" className="input input-bordered w-full"required />
 
                     </div>
                     <div className="form-control w-full max-w-xs ">
                         <label className="label">
                             <span className="text-base">Resale Price</span>
                         </label>
-                        <input type="number" name='resalePrice' placeholder="Type here" className="input input-bordered w-full" />
+                        <input type="number" name='resalePrice' placeholder="Type here" className="input input-bordered w-full" required/>
 
                     </div>
                 </div>
@@ -108,7 +108,7 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="text-base">Description</span>
                     </label>
-                    <textarea className="textarea textarea-bordered" name='des' placeholder="Description"></textarea>
+                    <textarea className="textarea textarea-bordered" name='des' required placeholder="Description"></textarea>
 
                 </div>
                 <div className="form-control w-full ">
@@ -123,7 +123,7 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="text-base">Genre</span>
                         </label>
-                        <select name='genre' className="select select-bordered w-full">
+                        <select name='genre' className="select select-bordered w-full" required>
                             {
                                 categories.map(category => <option value={category.genre} key={category._id}>{category.genre}</option>)
 
@@ -134,7 +134,7 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="text-base">Condition</span>
                         </label>
-                        <select name='condition' className="select select-bordered w-full max-w-xs">
+                        <select name='condition' className="select select-bordered w-full max-w-xs" required>
                             <option value='Excellent'>Excellent</option>
                             <option value='Good'>Good</option>
                             <option value='Fair'>Fair</option>
@@ -147,7 +147,7 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="text-base">Phone Number</span>
                         </label>
-                        <input type="number" name='phone' placeholder="Type here" className="input input-bordered w-full" required />
+                        <input type="number" name='phone' placeholder="Type here"  className="input input-bordered w-full" required />
 
 
                     </div>

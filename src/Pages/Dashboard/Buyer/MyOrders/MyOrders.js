@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext)
     const { data: myBookings = [], refetch, isLoading } = useQuery({
         queryKey: ['myBookings'],
-        queryFn: () => fetch(`http://localhost:7000/bookings/${user?.email}`,{
+        queryFn: () => fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/bookings/${user?.email}`,{
             headers: {
 
                 authorization: `bearer ${localStorage.getItem("bookToken")}`

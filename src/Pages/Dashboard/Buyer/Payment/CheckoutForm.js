@@ -16,7 +16,7 @@ console.log(booking)
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:7000/create-payment-intent", {
+        fetch("https://assignment-12-server-sanjidaakterafia0307.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -33,7 +33,7 @@ console.log(booking)
   
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:7000/create-payment-intent", {
+        fetch("https://assignment-12-server-sanjidaakterafia0307.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -107,7 +107,7 @@ console.log(booking)
                 sellerEmail:sellerEmail,
                 bookingId:booking._id
             }
-            fetch('http://localhost:7000/payments', {
+            fetch('https://assignment-12-server-sanjidaakterafia0307.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -126,13 +126,13 @@ console.log(booking)
                 })
         }
 
-
+        setProcessing(false)
 
     }
     return (
-        <div>
+        <div className='mr-10'>
             <form onSubmit={handleSubmit}>
-                <CardElement
+                <CardElement className='shadow-xl p-10 rounded-md'
                     options={{
                         style: {
                             base: {
@@ -148,13 +148,13 @@ console.log(booking)
                         },
                     }}
                 />
-                <button type="submit" 
+                <button type="submit" className='btn my-7'
                 disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
 
-            <p className="text-red-500">{cardError}</p>
+            <p className="text-red-500 font-semibold">{cardError}</p>
             {
                 success && <div>
                     <p className='text-green-500'>{success}</p>

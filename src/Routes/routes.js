@@ -46,7 +46,7 @@ export const router=createBrowserRouter([
             {
                 path:"/categories/:name",
                 element:<PrivateRoute><Books></Books></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:7000/categories/${params.name}`)
+                loader:({params})=>fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/categories/${params.name}`)
             },
         ],
         
@@ -92,7 +92,7 @@ export const router=createBrowserRouter([
             {
                 path:"/dashboard/payment/:id",
                 element:<PrivateRoute><Payment></Payment></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:7000/payment/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-12-server-sanjidaakterafia0307.vercel.app/payment/${params.id}`)
             },
         ]
     }
