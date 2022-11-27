@@ -8,6 +8,7 @@ import Blog from "../Pages/Blog/Blog";
 import Books from "../Pages/Books/Books";
 import AllBuyers from "../Pages/Dashboard/Admin/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/Admin/AllSellers/AllSellers";
+import ReportAdmin from "../Pages/Dashboard/Admin/ReportAdmin/ReportAdmin";
 import MyOrders from "../Pages/Dashboard/Buyer/MyOrders/MyOrders";
 import Payment from "../Pages/Dashboard/Buyer/Payment/Payment";
 import AddProduct from "../Pages/Dashboard/Seller/AddProduct/AddProduct";
@@ -79,6 +80,10 @@ export const router=createBrowserRouter([
             {
                 path:"/dashboard/all-buyer",
                 element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path:"/dashboard/reported-items",
+                element:<AdminRoute><ReportAdmin></ReportAdmin></AdminRoute>
             },
             {
                 path:"/dashboard/my-orders",

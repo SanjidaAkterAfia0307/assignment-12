@@ -6,12 +6,12 @@ import BigLoading from '../../../../Components/Loading/BigLoading';
 import NoElements from '../../NoElements/NoElements';
 
 const AllSellers = () => {
-    const { data: sellers = [],refetch ,isLoading} = useQuery({
+    const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['sellers'],
-        queryFn: () => fetch('http://localhost:7000/sellers',{
-            headers:{
+        queryFn: () => fetch('http://localhost:7000/sellers', {
+            headers: {
 
-                authorization:`bearer ${localStorage.getItem("bookToken")}`
+                authorization: `bearer ${localStorage.getItem("bookToken")}`
             }
         })
             .then(res => res.json())
@@ -19,46 +19,46 @@ const AllSellers = () => {
     console.log(sellers)
 
 
-    const handleDelete=(id)=>{
+    const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:7000/sellers/${id}`,{
-            method:"DELETE",
-            headers:{
+        fetch(`http://localhost:7000/sellers/${id}`, {
+            method: "DELETE",
+            headers: {
 
-                authorization:`bearer ${localStorage.getItem("bookToken")}`
+                authorization: `bearer ${localStorage.getItem("bookToken")}`
             }
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            toast.success("Delete Successfully !")
-            refetch()
-        })
-    }
-    const handleVerify=(id)=>{
-        console.log(id)
-        fetch(`http://localhost:7000/sellers/${id}`,{
-            method:"PUT",
-            headers:{
-
-                authorization:`bearer ${localStorage.getItem("bookToken")}`
-            }
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            if(data.modifiedCount>0){
-
-                toast.success("Verify Successfully !")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success("Delete Successfully !")
                 refetch()
+            })
+    }
+    const handleVerify = (id) => {
+        console.log(id)
+        fetch(`http://localhost:7000/sellers/${id}`, {
+            method: "PUT",
+            headers: {
+
+                authorization: `bearer ${localStorage.getItem("bookToken")}`
             }
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+
+                    toast.success("Verify Successfully !")
+                    refetch()
+                }
+            })
     }
 
-    if(isLoading){
+    if (isLoading) {
         return <BigLoading></BigLoading>
     }
-    if(sellers.length<1){
+    if (sellers.length < 1) {
         return <NoElements item="Sellers"></NoElements>
     }
     return (
@@ -88,21 +88,21 @@ const AllSellers = () => {
                             <td>{seller.email}</td>
                             <td>
 
-                            {
-                                !seller.verify && 
-                                
-                                <button className="btn btn-accent " onClick={() => handleVerify(seller._id)}>Verify</button>
-                            
-                            }
-                            {
-                                seller.verify && 
-                                <FaCheckCircle className='text-blue-500  w-10 h-10 '></FaCheckCircle>
-                            }
+                                {
+                                    !seller.verify &&
+
+                                    <button className="btn btn-accent " onClick={() => handleVerify(seller._id)}>Verify</button>
+
+                                }
+                                {
+                                    seller.verify &&
+                                    <FaCheckCircle className='text-blue-500  w-10 h-10 '></FaCheckCircle>
+                                }
                             </td>
                             <td>
                                 <button className="btn btn-accent " onClick={() => handleDelete(seller._id)}>Delete</button>
                             </td>
-                            
+
 
                         </tr>)
                     }

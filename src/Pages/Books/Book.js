@@ -3,6 +3,21 @@ import { FaCheckCircle } from 'react-icons/fa';
 import Booking from './Booking';
 
 const Book = ({ book, setModalBook }) => {
+
+    const handleReport = (id) => {
+        console.log(id)
+        fetch(`http://localhost:7000/books/report/${id}`,{
+            method:"PUT",
+            headers:{
+                "content-type":'application/json',
+                authorization:`bearer ${localStorage.getItem("bookToken")}`
+            }
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+        })
+    }
     // console.log(book)
     const { name, author, img, originalPrice, resalePrice, location, verify, post, sellerName, summery, yearOfUse, yearOfPurchase } = book
     return (
@@ -20,7 +35,7 @@ const Book = ({ book, setModalBook }) => {
                     </div>
                 </div>
                 <div className=''>
-                <p className='w2'>{summery}</p>
+                    <p className='w2'>{summery}</p>
                 </div>
                 <div className='flex justify-between'>
                     <div>
@@ -39,7 +54,10 @@ const Book = ({ book, setModalBook }) => {
                 </div>
                 <div className="card-actions justify-end my-3">
 
-                    <label htmlFor="book" className="btn btn-primary " onClick={() => setModalBook(book)}>Buy Now</label>
+                    <div className="flex gap-6">
+                        <label htmlFor="book" className="btn btn-primary " onClick={() => handleReport(book._id)}>Report</label>
+                        <label htmlFor="book" className="btn btn-primary " onClick={() => setModalBook(book)}>Buy Now</label>
+                    </div>
                 </div>
             </div>
 
