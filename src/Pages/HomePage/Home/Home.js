@@ -5,6 +5,7 @@ import AboutUs from '../AboutUs/AboutUs';
 import AdvertiseItems from '../AdvertiseItems/AdvertiseItems';
 import { useQuery } from '@tanstack/react-query';
 import Contact from '../Contact';
+import GetOffer from '../GetOffer';
 
 const Home = () => {
     const { data: books = [] } = useQuery({
@@ -17,6 +18,7 @@ const Home = () => {
             <div className='md:w-3/4 w-full p-5 mx-auto space-y-36'>
             <HomeBanner></HomeBanner>
             <Categories></Categories>
+            <GetOffer></GetOffer>
             <AboutUs></AboutUs>
             <Contact></Contact>
         </div>
@@ -27,6 +29,7 @@ const Home = () => {
             <HomeBanner></HomeBanner>
             <Categories></Categories>
             <AdvertiseItems></AdvertiseItems>
+            <GetOffer></GetOffer>
             <AboutUs></AboutUs>
             <Contact></Contact>
         </div>
